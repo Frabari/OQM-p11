@@ -1,0 +1,29 @@
+{
+  "name": "oqm-p11",
+  "version": "1.0.0",
+  "description": "Office Queue Management",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Frabari/OQM-p11.git"
+  },
+  "author": "SoftEng II team p11",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Frabari/OQM-p11/issues"
+  },
+  "homepage": "https://github.com/Frabari/OQM-p11#readme",
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "devDependencies": {
+    "@commitlint/cli": "^13.2.1",
+    "@commitlint/config-conventional": "^13.2.0",
+    "husky": "^7.0.2"
+  }
+}
