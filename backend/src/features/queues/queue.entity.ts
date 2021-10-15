@@ -1,5 +1,5 @@
-import { Service } from '../service/service.entity';
-import { Ticket } from '../ticket/ticket.entity';
+import { Service } from '../services/service.entity';
+import { Ticket } from '../tickets/ticket.entity';
 
 export interface Queue {
   /**

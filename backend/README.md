@@ -58,16 +58,16 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## Support
+## DB seed
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+To seed the db with test data first run the app at least once:
 
-## Stay in touch
+```shell
+$ npm run start:dev
+```
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+and then run
 
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+```shell
+$ npm run db:seed
+```

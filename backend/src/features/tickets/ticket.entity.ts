@@ -1,5 +1,5 @@
-import { Service } from '../service/service.entity';
-import { Desk } from '../desk/desk.entity';
+import { Service } from '../services/service.entity';
+import { Desk } from '../desks/desk.entity';
 
 export interface Ticket {
   /**
