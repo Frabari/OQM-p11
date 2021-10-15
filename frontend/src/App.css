@@ -28,6 +28,27 @@
   color: #61dafb;
 }
 
+#service-button {
+  width: 256px;
+  height: 128px;
+  color: rgb(239, 137, 52);
+  border-color: rgb(239, 137, 52);
+  justify-content: center;
+  font-size: 24px;
+}
+
+#service-button:hover {
+  background-color: rgba(239, 137, 52, 0.1);
+}
+
+#success-alert {
+  font-size: 24px;
+  width: 256px;
+  height: 64px;
+  justify-content: center;
+  align-content: center;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
