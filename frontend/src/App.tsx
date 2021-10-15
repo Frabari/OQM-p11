@@ -28,11 +28,11 @@ export default function App() {
       <div className="App">
         <Navigation />
 
-        <Route path="/">
+        <Route exact path="/">
           <Redirect to="/totem" />
         </Route>
 
-        <Route path="/totem">
+        <Route exact path="/totem">
           {services.map((s) => (
             <Service key={s.prefix} name={s.name} />
           ))}
