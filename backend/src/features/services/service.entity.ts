@@ -34,7 +34,7 @@ export class Service {
   /**
    * The desks where this service is available
    */
-  @ManyToMany(() => Desk, desk => desk.services, { cascade: true, eager: true })
+  @ManyToMany(() => Desk, desk => desk.services, { cascade: true })
   @JoinTable()
   desks: Desk[];
 }
