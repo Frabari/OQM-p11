@@ -1,10 +1,12 @@
 import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Service } from '../services/service.entity';
 
+export type DeskId = number;
+
 @Entity()
 export class Desk {
   @PrimaryGeneratedColumn()
-  id: number;
+  id: DeskId;
 
   /**
    * The services available at this Desk
