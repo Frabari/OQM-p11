@@ -7,10 +7,12 @@ import {
 } from 'typeorm';
 import { Desk } from '../desks/desk.entity';
 
+export type ServiceId = number;
+
 @Entity()
 export class Service {
   @PrimaryGeneratedColumn()
-  id: number;
+  id: ServiceId;
 
   /**
    * A display name for this service
