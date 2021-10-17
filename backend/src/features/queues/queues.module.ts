@@ -5,5 +5,6 @@ import { ServicesModule } from '../services/services.module';
 @Module({
   imports: [ServicesModule],
   providers: [QueuesService],
+  exports: [QueuesService],
 })
 export class QueuesModule {}
