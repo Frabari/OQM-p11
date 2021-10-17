@@ -4,6 +4,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ServicesModule } from './features/services/services.module';
 import { DesksModule } from './features/desks/desks.module';
+import { QueuesModule } from './features/queues/queues.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { DesksModule } from './features/desks/desks.module';
     }),
     ServicesModule,
     DesksModule,
+    QueuesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
