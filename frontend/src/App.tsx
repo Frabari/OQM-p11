@@ -1,6 +1,7 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import API from './api/API';
 
 import Navigation from './components/Navigation';
 import Service from './components/Service';
@@ -23,6 +24,12 @@ export default function App() {
   const [services, setServices] = useState(fake_serv);
   const [tickets, setTickets] = useState(fake_ticket);
 
+  useEffect(() => {
+    API.getServices()
+      .then(services => setServices(services))
+      .catch(err => console.log(err));
+  }, []);
+
   return (
     <Router>
       <div className="App">
@@ -33,13 +40,13 @@ export default function App() {
         </Route>
 
         <Route exact path="/totem">
-          {services.map((s) => (
+          {services.map(s => (
             <Service key={s.prefix} name={s.name} />
           ))}
         </Route>
 
         <Route path="/desk">
-          {tickets.map((t) => (
+          {tickets.map(t => (
             <Client
               key={t.number}
               number={t.number}
