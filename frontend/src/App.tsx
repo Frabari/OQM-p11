@@ -41,11 +41,11 @@ export default function App() {
 
         <Route exact path="/totem">
           {services.map(s => (
-            <Service key={s.prefix} name={s.name} />
+            <Service key={s.prefix} service={s} />
           ))}
         </Route>
 
-        <Route path="/desk">
+        <Route path="/queues">
           {tickets.map(t => (
             <Client
               key={t.number}

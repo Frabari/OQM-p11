@@ -1,48 +1,40 @@
-import {
-  Card,
-  CardContent,
-  CardActions,
-  Typography,
-  Container,
-  Button,
-  Alert,
-  Snackbar,
-} from '@mui/material';
+import { Typography, Container, Button, Alert, Snackbar } from '@mui/material';
 import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
 import React, { useState } from 'react';
+import API, { Ticket } from '../api/API';
 
 export default function Service(props: any) {
   const [open, setOpen] = useState(false);
   const [num, setNum] = useState(0);
 
   const handleClick = () => {
-    setOpen(true);
-    setNum((old) => old + 1);
+    setNum(old => old + 1);
+    let ticket: Ticket = {
+      service: { id: props.service.id },
+      issuedAt: new Date(),
+    };
+
+    API.postTicket(ticket)
+      .then(() => setOpen(true))
+      .catch(err => console.log(err));
   };
 
   const handleClose = (event?: React.SyntheticEvent, reason?: string) => {
     if (reason === 'clickaway') {
       return;
     }
-
     setOpen(false);
   };
 
   return (
     <Container style={{ marginTop: 20 }}>
       <Button id="service-button" variant="outlined" onClick={handleClick}>
-        {/*<Card style={{ marginBlock: 1 }}>*/}
-        {/*  <CardContent>*/}
-        {/*    <CardActions disableSpacing>*/}
         <Typography variant="h5">
           <RadioButtonCheckedIcon
             style={{ position: 'relative', top: 4, marginRight: 8 }}
           />
-          {props.name}
+          {props.service.name}
         </Typography>
-        {/*    </CardActions>*/}
-        {/*  </CardContent>*/}
-        {/*</Card>*/}
       </Button>
       <Snackbar
         anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
@@ -56,13 +48,9 @@ export default function Service(props: any) {
           severity="success"
           sx={{ width: '100%' }}
         >
-          {props.name + ' ' + num}
+          {props.service.name + ' ' + num}
         </Alert>
       </Snackbar>
     </Container>
   );
-}
-
-function ShowTicket() {
-  return;
 }
