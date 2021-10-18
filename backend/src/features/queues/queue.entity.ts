@@ -1,7 +1,7 @@
 import { Service } from '../services/service.entity';
 import { Ticket } from '../tickets/ticket.entity';
 
-export interface Queue {
+export class Queue {
   /**
    * The service this Queue is related to
    */
