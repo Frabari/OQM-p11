@@ -1,7 +1,7 @@
 import { Service } from '../services/service.entity';
 import { Desk } from '../desks/desk.entity';
 
-export interface Ticket {
+export class Ticket {
   /**
    * The number printed on the physical issued ticket,
    * maybe with a prefix linked to the service?

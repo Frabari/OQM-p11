@@ -1,7 +1,7 @@
 import { Service } from '../services/service.entity';
 import { Ticket } from '../tickets/ticket.entity';
 
-export interface Queue {
+export class Queue {
   /**
    * The service this Queue is related to
    */
@@ -10,4 +10,8 @@ export interface Queue {
    * The FIFO queue
    */
   tickets: Ticket[];
+  /**
+   * The number to be assigned to the next ticket
+   */
+  counter: number;
 }
