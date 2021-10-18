@@ -13,6 +13,7 @@ import { ServiceId } from '../services/service.entity';
 import { ServicesService } from '../services/services.service';
 import { Ticket } from '../tickets/ticket.entity';
 import { DesksService } from '../desks/desks.service';
+import { EventsGateway } from '../events/events.gateway';
 
 type Queues = Record<ServiceId, Queue>;
 
@@ -64,6 +65,7 @@ export class QueuesService {
   constructor(
     private servicesService: ServicesService,
     private desksService: DesksService,
+    private eventsGateway: EventsGateway,
   ) {
     servicesService.findAll().then(services => {
       this.queues = Object.fromEntries(
@@ -73,6 +75,9 @@ export class QueuesService {
         ]),
       );
       this._queuesReady$.next(true);
+    });
+    this.calledTickets$.subscribe(ticket => {
+      this.eventsGateway.server.emit('ticket-called', ticket);
     });
   }
 
