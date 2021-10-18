@@ -10,4 +10,8 @@ export interface Queue {
    * The FIFO queue
    */
   tickets: Ticket[];
+  /**
+   * The number to be assigned to the next ticket
+   */
+  counter: number;
 }

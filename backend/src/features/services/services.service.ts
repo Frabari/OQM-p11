@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Service } from './service.entity';
+import { Service, ServiceId } from './service.entity';
 
 @Injectable()
 export class ServicesService {
@@ -12,5 +12,9 @@ export class ServicesService {
 
   findAll() {
     return this.servicesRepository.find({ select: ['id', 'name'] });
+  }
+
+  findOne(id: ServiceId) {
+    return this.servicesRepository.findOne(id);
   }
 }
