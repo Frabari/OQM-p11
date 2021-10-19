@@ -5,8 +5,8 @@ import API from './api/API';
 
 import Navigation from './components/Navigation';
 import Service from './components/Service';
-import Client from './components/Client';
 import SvgButton from './components/CustomButton';
+import Queues from './components/Queues';
 
 const fake_serv = [
   { name: 'servizio1', prefix: 'A', avgWaitingTime: 10 },
@@ -14,16 +14,8 @@ const fake_serv = [
   { name: 'servizio3', prefix: 'C', avgWaitingTime: 10 },
 ];
 
-const fake_ticket = [
-  { number: 1, service: 'A', desk: 2 },
-  { number: 1, service: 'B', desk: 3 },
-  { number: 1, service: 'C', desk: null },
-  { number: 2, service: 'A', desk: null },
-];
-
 export default function App() {
   const [services, setServices] = useState(fake_serv);
-  const [tickets, setTickets] = useState(fake_ticket);
 
   useEffect(() => {
     API.getServices()
@@ -47,14 +39,7 @@ export default function App() {
         </Route>
 
         <Route path="/queues">
-          {tickets.map(t => (
-            <Client
-              key={t.number}
-              number={t.number}
-              service={t.service}
-              desk={t.desk}
-            />
-          ))}
+          <Queues />
         </Route>
 
         <Route path="/desk">
