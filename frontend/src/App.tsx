@@ -6,6 +6,7 @@ import API from './api/API';
 import Navigation from './components/Navigation';
 import Service from './components/Service';
 import Client from './components/Client';
+import SvgButton from './components/CustomButton';
 
 const fake_serv = [
   { name: 'servizio1', prefix: 'A', avgWaitingTime: 10 },
@@ -54,6 +55,10 @@ export default function App() {
               desk={t.desk}
             />
           ))}
+        </Route>
+
+        <Route path="/desk">
+          <SvgButton style={{ marginTop: 20 }}> Next Client </SvgButton>
         </Route>
       </div>
     </Router>
