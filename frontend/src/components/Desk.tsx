@@ -10,9 +10,12 @@ export default function Desk(props: any) {
   };
 
   return (
-    <SvgButton style={{ marginTop: 20 }} onClick={handleSubmit}>
-      {' '}
-      Next Client{' '}
-    </SvgButton>
+    <>
+      <h1>Desk {id}</h1>
+      <SvgButton style={{ marginTop: 20 }} onClick={handleSubmit}>
+        {' '}
+        Next Client{' '}
+      </SvgButton>
+    </>
   );
 }
