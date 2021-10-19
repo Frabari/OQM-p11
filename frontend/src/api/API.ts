@@ -21,6 +21,17 @@ async function postTicket(ticket: Ticket) {
   }
 }
 
-const API = { getServices, postTicket };
+async function freeDesk(id: string) {
+  let response = await fetch(`/desks/${id}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ free: true }),
+  });
+  if (response.ok) {
+    return await response.json();
+  }
+}
+
+const API = { getServices, postTicket, freeDesk };
 
 export default API;
