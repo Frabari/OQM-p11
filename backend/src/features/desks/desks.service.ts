@@ -45,7 +45,7 @@ export class DesksService implements EntitySubscriberInterface {
     return this.desksRepository.find({ relations: ['services'] });
   }
 
-  updateDesk(desk: Desk) {
+  updateDesk(desk: Partial<Desk>) {
     return this.desksRepository.save(desk);
   }
 }
