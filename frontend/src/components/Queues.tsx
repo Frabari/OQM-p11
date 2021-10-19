@@ -56,7 +56,7 @@ export default function Queues() {
             severity="success"
             sx={{ width: '100%' }}
           >
-            {calledTicket.id}
+            {calledTicket.id} desk {calledTicket.desk.id}
           </Alert>
         )}
       </Snackbar>

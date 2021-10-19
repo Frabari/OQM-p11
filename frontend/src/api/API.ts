@@ -21,7 +21,7 @@ async function postTicket(ticket: Ticket) {
   }
 }
 
-async function freeDesk(id: string) {
+async function freeDesk(id: number) {
   let response = await fetch(`/desks/${id}`, {
     method: 'PATCH',
     headers: { 'Content-Type': 'application/json' },

@@ -5,8 +5,9 @@ import {
   firstValueFrom,
   map,
   mergeMap,
-  Subject,
+  ReplaySubject,
   take,
+  tap,
 } from 'rxjs';
 import { Queue } from './queue.entity';
 import { ServiceId } from '../services/service.entity';
@@ -22,7 +23,7 @@ export class QueuesService {
   /**
    * Emits when there is any update on any queue
    */
-  queues$ = new Subject<Queues>();
+  queues$ = new ReplaySubject<Queues>(1);
   private queues: Queues = {};
   private _queuesReady$ = new BehaviorSubject<boolean>(false);
   private queuesReady$ = this._queuesReady$.pipe(filter(v => v === true));
@@ -49,12 +50,13 @@ export class QueuesService {
               acc.service.serviceTime < val.service.serviceTime ? acc : val,
             );
           }
-          const ticket = queue.tickets.reverse().find(t => t.desk == null);
+          const ticket = queue.tickets.find(t => t.desk == null);
           if (ticket) {
             desk.free = false;
             ticket.desk = desk;
-            this.desksService.updateDesk(desk);
-            this.queues$.next(this.queues);
+            this.desksService.updateDesk(desk).then(() => {
+              this.queues$.next(this.queues);
+            });
           }
           return ticket;
         }),

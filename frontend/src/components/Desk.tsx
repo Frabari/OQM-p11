@@ -6,7 +6,7 @@ export default function Desk(props: any) {
   const { id } = useParams<{ id: string }>();
 
   const handleSubmit = () => {
-    API.freeDesk(id);
+    API.freeDesk(+id);
   };
 
   return (

@@ -37,7 +37,11 @@ export class DesksService implements EntitySubscriberInterface {
   afterUpdate(event: UpdateEvent<Desk>) {
     const entity = event.entity as Desk;
     if (entity.free) {
-      this.freeDesks$.next(entity);
+      this.desksRepository
+        .findOne(entity.id, { relations: ['services'] })
+        .then(desk => {
+          this.freeDesks$.next(desk);
+        });
     }
   }
 

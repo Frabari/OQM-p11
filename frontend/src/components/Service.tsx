@@ -6,6 +6,7 @@ import API, { Ticket } from '../api/API';
 export default function Service(props: any) {
   const [open, setOpen] = useState(false);
   const [num, setNum] = useState(0);
+  const [lastIssuedTicket, setLastIssuedTicket] = useState(null);
 
   const handleClick = () => {
     setNum(old => old + 1);
@@ -15,7 +16,10 @@ export default function Service(props: any) {
     };
 
     API.postTicket(ticket)
-      .then(() => setOpen(true))
+      .then(ticket => {
+        setOpen(true);
+        setLastIssuedTicket(ticket);
+      })
       .catch(err => console.log(err));
   };
 
@@ -48,7 +52,7 @@ export default function Service(props: any) {
           severity="success"
           sx={{ width: '100%' }}
         >
-          {props.service.name + ' ' + num}
+          {lastIssuedTicket?.id}
         </Alert>
       </Snackbar>
     </Container>
